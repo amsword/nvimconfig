@@ -15,6 +15,8 @@ return function()
   local bufferline = require("bufferline")
   bufferline.setup({
     options = {
+      numbers = "buffer_id",
+      show_buffer_icons = false,
       offsets = {
         {
           filetype = "NvimTree",

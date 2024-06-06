@@ -16,30 +16,30 @@ local plugins = {
     },
   },
   -- Indent blankline
-  {
+  --[[ {
     "lukas-reineke/indent-blankline.nvim",
     event = "BufEnter",
     config = require("ui.indent_blankline"),
-  },
+  }, ]]
   -- Treesitter
   {
     "nvim-treesitter/nvim-treesitter",
     config = require("ui.treesitter"),
   },
   -- Bufferline
-  {
+  --[[ {
     "akinsho/bufferline.nvim",
     config = require("ui.bufferline"),
     dependencies = {
       "nvim-tree/nvim-web-devicons",
     },
-  },
+  }, ]]
   -- Vim Illuminate
-  {
-    "RRethy/vim-illuminate",
-    event = "BufEnter",
-    config = require("ui.vim_illuminate"),
-  },
+  -- {
+  --   "RRethy/vim-illuminate",
+  --   event = "BufEnter",
+  --   config = require("ui.vim_illuminate"),
+  -- },
   -- Which Key
   {
     "folke/which-key.nvim",

@@ -17,11 +17,11 @@ local tools = {
     event = "VeryLazy",
   },
   -- Neoformat
-  {
-    "mhartington/formatter.nvim",
-    config = require("tools.formatter"),
-    event = "VeryLazy",
-  },
+  -- {
+  --   "mhartington/formatter.nvim",
+  --   config = require("tools.formatter"),
+  --   event = "VeryLazy",
+  -- },
   -- Toggleterm
   {
     "akinsho/toggleterm.nvim",
@@ -108,6 +108,16 @@ local tools = {
     dependencies = { "nvim-lua/plenary.nvim" },
     event = "VeryLazy",
   },
+  -- {
+  --   'pocco81/auto-save.nvim',
+  --   config = require("tools.autosave"),
+  -- },
+  {
+    'github/copilot.vim'
+  },
+  {
+    'tpope/vim-fugitive'
+  }
 }
 
 return tools

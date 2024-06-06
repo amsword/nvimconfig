@@ -1,5 +1,5 @@
-vim.g.mapleader = " "
-vim.g.maplocalleader = " "
+vim.g.mapleader = ","
+vim.g.maplocalleader = ","
 
 vim.opt.backspace = "2"
 vim.opt.showcmd = true
@@ -21,7 +21,7 @@ vim.wo.cursorline = true
 vim.wo.cursorlineopt = "number"
 
 -- Make current buffer's directory the cwd
-vim.opt.autochdir = true
+-- vim.opt.autochdir = true
 
 -- Set formatting options
 vim.opt.textwidth = 120

@@ -65,25 +65,30 @@ local function conf_keymaps()
   local plenary_job = require("plenary.job")
 
   -- Built-in keymaps
-  vim.keymap.set("n", "<leader>fs", function()
+  vim.keymap.set("n", "<leader>t", function()
     local git_toplevel = plenary_job:new({ command = "git", args = { "rev-parse", "--show-toplevel" } }):sync()[1]
-    builtin.find_files({ cwd = git_toplevel })
+    builtin.find_files({
+      cwd = git_toplevel,
+      previewer = false,
+    })
   end, { desc = "Find files" })
   vim.keymap.set("n", "<leader>gf", builtin.git_files, { desc = "Git files" })
-  vim.keymap.set("n", "<leader>fr", builtin.oldfiles, { desc = "Recent files" })
+  vim.keymap.set("n", "<leader>r", builtin.oldfiles, { desc = "Recent files" })
   vim.keymap.set("n", "<leader>fg", function()
     local git_toplevel = plenary_job:new({ command = "git", args = { "rev-parse", "--show-toplevel" } }):sync()[1]
-    builtin.live_grep({ cwd = git_toplevel })
+    builtin.live_grep({
+      --[[ cwd = git_toplevel, ]]
+    })
   end, { desc = "Live grep in project" })
-  vim.keymap.set("n", "<leader>fb", builtin.buffers, { desc = "Open buffers" })
+  vim.keymap.set("n", "<leader>b", builtin.buffers, { desc = "Open buffers" })
   vim.keymap.set("n", "<leader>hk", builtin.keymaps, { desc = "Describe keymaps" })
   vim.keymap.set("n", "<leader>hh", builtin.help_tags, { desc = "Help tags" })
   vim.keymap.set("n", "<leader>hm", builtin.man_pages, { desc = "Man pages" })
   vim.keymap.set("n", "<leader>ot", builtin.colorscheme, { desc = "Select theme" })
   vim.keymap.set("n", "/", builtin.current_buffer_fuzzy_find, { desc = "Fuzzy find in file" })
   vim.keymap.set("n", "<C-s>", function() find_exact("") end, { desc = "Find in buffer exact match" })
-  vim.keymap.set("n", "*", find_under_cursor, { desc = "Fuzzy find in file" })
-  vim.keymap.set("n", "#", find_under_cursor, { desc = "Fuzzy find in file" })
+  -- vim.keymap.set("n", "*", find_under_cursor, { desc = "Fuzzy find in file" })
+  -- vim.keymap.set("n", "#", find_under_cursor, { desc = "Fuzzy find in file" })
 
   -- Extensions keymaps
   vim.keymap.set("n", "<leader>ff", extensions.file_browser.file_browser, { desc = "File browser" })
@@ -96,6 +101,10 @@ return function()
       path_display={"smart"}
     },
     pickers = {
+      buffers = {
+        previewer = false,
+        path_display = { "absolute" },
+      },
       current_buffer_fuzzy_find = {
         winblend = 10,
         preview_title = false,
@@ -112,7 +121,7 @@ return function()
         },
       },
       colorscheme = {
-        enable_preview = true,
+        enable_preview = false,
         theme = "dropdown",
         layout_config = {
           anchor = "N",
