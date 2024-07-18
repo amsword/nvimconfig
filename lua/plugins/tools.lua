@@ -102,12 +102,12 @@ local tools = {
     build = "deno task --quiet build:fast",
   },
   -- Diffview
-  {
-    "sindrets/diffview.nvim",
-    config = require("tools.diffview"),
-    dependencies = { "nvim-lua/plenary.nvim" },
-    event = "VeryLazy",
-  },
+  -- {
+  --   "sindrets/diffview.nvim",
+  --   config = require("tools.diffview"),
+  --   dependencies = { "nvim-lua/plenary.nvim" },
+  --   event = "VeryLazy",
+  -- },
   -- {
   --   'pocco81/auto-save.nvim',
   --   config = require("tools.autosave"),

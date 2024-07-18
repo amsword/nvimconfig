@@ -1,20 +1,20 @@
 local plugins = {
   -- Dashboard
-  {
-    "glepnir/dashboard-nvim",
-    event = "VimEnter",
-    config = require("ui.dashboard"),
-    dependencies = { { "nvim-tree/nvim-web-devicons" } },
-  },
+  -- {
+  --   "glepnir/dashboard-nvim",
+  --   event = "VimEnter",
+  --   config = require("ui.dashboard"),
+  --   dependencies = { { "nvim-tree/nvim-web-devicons" } },
+  -- },
   -- Lualine
-  {
-    "nvim-lualine/lualine.nvim",
-    -- init = lazyLoad("lualine.nvim"),
-    config = require("ui.lualine"),
-    dependencies = {
-      "nvim-tree/nvim-web-devicons",
-    },
-  },
+  -- {
+  --   "nvim-lualine/lualine.nvim",
+  --   -- init = lazyLoad("lualine.nvim"),
+  --   config = require("ui.lualine"),
+  --   dependencies = {
+  --     "nvim-tree/nvim-web-devicons",
+  --   },
+  -- },
   -- Indent blankline
   --[[ {
     "lukas-reineke/indent-blankline.nvim",
@@ -41,10 +41,10 @@ local plugins = {
   --   config = require("ui.vim_illuminate"),
   -- },
   -- Which Key
-  {
-    "folke/which-key.nvim",
-    config = require("ui.which_key"),
-  },
+  -- {
+  --   "folke/which-key.nvim",
+  --   config = require("ui.which_key"),
+  -- },
   -- Nvim Tree
   {
     "nvim-tree/nvim-tree.lua",
@@ -69,13 +69,13 @@ local plugins = {
     config = require("ui.gitsigns"),
   },
   -- TODO Comments
-  {
-    "folke/todo-comments.nvim",
-    dependencies = {
-      "nvim-lua/plenary.nvim",
-    },
-    config = require("ui.todo_comments"),
-  },
+  -- {
+  --   "folke/todo-comments.nvim",
+  --   dependencies = {
+  --     "nvim-lua/plenary.nvim",
+  --   },
+  --   config = require("ui.todo_comments"),
+  -- },
   -- Fidget
   {
     "j-hui/fidget.nvim",

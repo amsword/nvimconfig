@@ -5,24 +5,20 @@ local editor = {
     event = "BufEnter",
     config = require("editor.comment"),
   },
-  -- Hop
   {
     "phaazon/hop.nvim",
     event = "BufEnter",
     config = require("editor.hop"),
   },
-  -- Move
   {
     "fedepujol/move.nvim",
     event = "BufEnter",
     config = require("editor.move"),
   },
-  -- Vim Visual Multi
   {
     "mg979/vim-visual-multi",
     event = "BufEnter",
   },
-  -- Cmp
   {
     "hrsh7th/nvim-cmp",
     dependencies = {
@@ -38,16 +34,13 @@ local editor = {
     event = "InsertEnter",
     config = require("editor.cmp"),
   },
-  -- Luasnip
   {
     "L3MON4D3/LuaSnip",
-    -- follow latest release.
     dependencies = {
       "rafamadriz/friendly-snippets",
     },
     config = require("editor.luasnip"),
   },
-  -- Nvim Autopairs
   {
     "windwp/nvim-autopairs",
     event = "InsertEnter",
