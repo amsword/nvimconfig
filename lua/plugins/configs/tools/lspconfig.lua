@@ -22,8 +22,19 @@ local function servers_config(lspconfig)
       },
     },
   })
-  lspconfig.pyright.setup({})
-  lspconfig.tsserver.setup({})
+  lspconfig.pyright.setup({
+    on_attach = function(client)
+      -- Enable logging
+      client.config.flags = client.config.flags or {}
+      client.config.flags.allow_incremental_sync = true
+      client.config.settings = client.config.settings or {}
+      client.config.settings.pyright = client.config.settings.pyright or {}
+      client.config.settings.pyright.logLevel = "info"  -- Change to "debug" for more detailed logs
+      client.notify('workspace/didChangeConfiguration', { settings = client.config.settings })
+    end
+  })
+  -- lspconfig.tsserver.setup({})
+  lspconfig.ts_ls.setup({})
   lspconfig.rust_analyzer.setup({
     settings = {
       ["rust-analyzer"] = {
@@ -50,21 +61,21 @@ local function keymaps_config()
       vim.bo[ev.buf].omnifunc = "v:lua.vim.lsp.omnifunc"
 
       -- Buffer local mappings.
-      vim.keymap.set(
-        "n",
-        "<leader>lwa",
-        vim.lsp.buf.add_workspace_folder,
-        { buffer = ev.buf, desc = "Add workspace folder" }
-      )
-      vim.keymap.set(
-        "n",
-        "<leader>lwr",
-        vim.lsp.buf.remove_workspace_folder,
-        { buffer = ev.buf, desc = "Remove workspace folder" }
-      )
-      vim.keymap.set("n", "<leader>lwl", function()
-        print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
-      end, { buffer = ev.buf, desc = "List workspace folders" })
+      -- vim.keymap.set(
+      --   "n",
+      --   "<leader>lwa",
+      --   vim.lsp.buf.add_workspace_folder,
+      --   { buffer = ev.buf, desc = "Add workspace folder" }
+      -- )
+      -- vim.keymap.set(
+      --   "n",
+      --   "<leader>lwr",
+      --   vim.lsp.buf.remove_workspace_folder,
+      --   { buffer = ev.buf, desc = "Remove workspace folder" }
+      -- )
+      -- vim.keymap.set("n", "<leader>lwl", function()
+      --   print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
+      -- end, { buffer = ev.buf, desc = "List workspace folders" })
     end,
   })
 end

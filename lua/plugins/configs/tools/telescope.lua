@@ -82,6 +82,9 @@ local function conf_keymaps()
   end, { desc = "Live grep in project" })
   vim.keymap.set("n", "<leader>b", builtin.buffers, { desc = "Open buffers" })
   vim.keymap.set("n", "<leader>hk", builtin.keymaps, { desc = "Describe keymaps" })
+  vim.keymap.set("n", "<leader>fs", function()
+    require('telescope.builtin').lsp_document_symbols({ symbols = {"function", "method"} })
+  end, { desc = "Browse functions and methods" })
   vim.keymap.set("n", "<leader>hh", builtin.help_tags, { desc = "Help tags" })
   vim.keymap.set("n", "<leader>hm", builtin.man_pages, { desc = "Man pages" })
   vim.keymap.set("n", "<leader>ot", builtin.colorscheme, { desc = "Select theme" })
@@ -98,7 +101,19 @@ end
 return function()
   require("telescope").setup({
     defaults = {
-      path_display={"smart"}
+      path_display={"smart"},
+      layout_strategy = "vertical",
+      -- layout_strategy = "horizontal",
+      layout_config = {
+        -- preview_cutoff = 0, -- Ensure the preview window is always visible
+        -- width = 0.99,       -- Adjust the width of the window
+        -- height = 0.85,      -- Adjust the height of the window
+        -- prompt_position = "top", -- Position the prompt at the top
+        -- horizontal = {
+        --   prompt_position = 'top',
+        --   preview_width = 0.5, -- Adjusts the width of the preview window
+        -- },
+      },
     },
     pickers = {
       buffers = {
@@ -107,11 +122,18 @@ return function()
       },
       current_buffer_fuzzy_find = {
         winblend = 10,
-        preview_title = false,
-        results_title = false,
+        -- preview_title = false,
+        -- results_title = false,
         theme = "ivy",
+        -- layout_config = {
+        --   height = 15,
+        -- },
+        layout_strategy = "vertical", -- Set the layout to vertical
         layout_config = {
-          height = 15,
+          preview_cutoff = 0,
+          preview_height = 0.5,
+          prompt_position = "top", -- Position the prompt at the top
+          mirror = true,          -- This keeps the preview below the results
         },
       },
       commands = {
@@ -126,6 +148,10 @@ return function()
         layout_config = {
           anchor = "N",
         },
+      },
+      lsp_document_symbols = {
+        theme = "dropdown",
+        symbols = {"function", "method"},
       },
     },
     extensions = {

@@ -42,14 +42,14 @@ local tools = {
         },
       },
       -- Navbuddy
-      {
-        "SmiteshP/nvim-navbuddy",
-        config = require("tools.navbuddy"),
-        dependencies = {
-          "SmiteshP/nvim-navic",
-          "MunifTanjim/nui.nvim",
-        },
-      },
+      -- {
+      --   "SmiteshP/nvim-navbuddy",
+      --   config = require("tools.navbuddy"),
+      --   dependencies = {
+      --     "SmiteshP/nvim-navic",
+      --     "MunifTanjim/nui.nvim",
+      --   },
+      -- },
       -- LSP signature
       {
         "ray-x/lsp_signature.nvim",
@@ -58,9 +58,15 @@ local tools = {
     },
   },
   -- Neodev
+  -- {
+  --   "folke/neodev.nvim",
+  --   config = require("tools.neodev"),
+  -- },
   {
-    "folke/neodev.nvim",
-    config = require("tools.neodev"),
+    "folke/lazydev.nvim",
+  },
+  {
+    "kdheepak/lazygit.nvim",
   },
   -- Mason
   {
@@ -116,8 +122,23 @@ local tools = {
     'github/copilot.vim'
   },
   {
+    "NeogitOrg/neogit",
+    dependencies = {
+      "nvim-lua/plenary.nvim",         -- required
+      {
+        "sindrets/diffview.nvim",        -- optional - Diff integration
+        config = require("tools.diffview"),
+      },
+
+      -- Only one of these is needed.
+      "nvim-telescope/telescope.nvim", -- optional
+    },
+    config = require("tools.neogit"),
+    -- config = true
+  },
+  {
     'tpope/vim-fugitive'
-  }
+  },
 }
 
 return tools
